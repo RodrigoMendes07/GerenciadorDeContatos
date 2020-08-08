@@ -20,7 +20,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author ti
  */
-public class CContato extends HttpServlet {
+public class CrudContato extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,49 +34,34 @@ public class CContato extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        request.setCharacterEncoding("UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* Inicio do Caso.*/
-            int acao = Integer.parseInt(request.getParameter("txtAcao"));
+            /* TODO output your page here. You may use following sample code. */
+            
             HttpSession session = request.getSession();
             Util getMascara = new Util();
 
-            switch (acao) {
+            Contato contato = new Contato();
 
-                case 1:
-                    /* Inicio do Caso.*/
+            contato.setCnpj(request.getParameter("txtCnpj"));
+            contato.setDtaContato(getMascara.parseData(request.getParameter("txtDtaAbertura")));
+            contato.setDtaRetorno(getMascara.parseData(request.getParameter("txtDtaRetorno")));
+            contato.setEmail(request.getParameter("txtEmail"));
+            contato.setCepReceita(request.getParameter("txtCepReceita"));
+            contato.setNome(request.getParameter("txtNome"));
+            contato.setObservacao(request.getParameter("txtObservacao"));
+            contato.setRazaoSocial(request.getParameter("txtRazaoSocial"));
+            contato.setRetorna(request.getParameter("txtRadio"));
+            contato.setTelefone(request.getParameter("txtTelefone"));
+            
+            
+           
+                ContatoJPADao.getInstance().persist(contato);
+            
+            
+            
 
-                    Contato contato = new Contato();
+            response.sendRedirect("criarContato.jsp");
 
-                    contato.setCnpj(request.getParameter("txtCnpj"));
-                    contato.setDtaContato(getMascara.parseData(request.getParameter("txtDtaAbertura")));
-                    contato.setDtaRetorno(getMascara.parseData(request.getParameter("txtDtaRetorno")));
-                    contato.setEmail(request.getParameter("txtEmail"));
-                    contato.setCepReceita(request.getParameter("txtCepReceita"));
-                    contato.setNome(request.getParameter("txtNome"));
-                    contato.setObservacao(request.getParameter("txtObservacao"));
-                    contato.setRazaoSocial(request.getParameter("txtRazaoSocial"));
-                    contato.setRetorna(request.getParameter("txtRadio"));
-                    contato.setTelefone(request.getParameter("txtTelefone"));
-
-                    ContatoJPADao.getInstance().persist(contato); 
-
-                //    session.setAttribute("mensagem", "Erro ao salvar dados do cliente.");
-                   
-                    response.sendRedirect("criarContato.jsp");
-
-                    break;
-
-                case 2:
-                    out.println("Acão" + acao);
-
-                    break;
-                default:
-
-                    System.out.println("O valor da variavel não é nenhum dos anteriores");
-                    response.sendRedirect("index.jsp");
-            }
-            /* Final do Caso. */
         }
     }
 

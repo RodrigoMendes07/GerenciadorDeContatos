@@ -45,7 +45,7 @@
                 <!-- Corpo do Formulario. -->
                 <div class="container">
                     <div class="col-md-12 order-md-1">
-                        <form method="post" action="CContato">
+                        <form method="post" action="CrudContato">
                             <div class="row">
                                 <div class="col-md-12 md-3">
                                     <h4>Dados do Cliente</h4>

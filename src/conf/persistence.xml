@@ -3,10 +3,10 @@
              xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
 	
-    <persistence-unit name="crud-jpa-hibernat" transaction-type="RESOURCE_LOCAL">
+    <persistence-unit name="crud-jpa-hibernate" transaction-type="RESOURCE_LOCAL">
 	
-        <class>br.com.gerenciador.Contato</class> 
-      		
+        <class>br.com.gerenciador.bean.Contato</class>
+        		
         <properties>
             <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/BDProjeto"/>
             <property name="javax.persistence.jdbc.user" value="postgres"/>

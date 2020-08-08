@@ -5,12 +5,20 @@
         <servlet-class>br.com.gerenciador.controle.CContato</servlet-class>
     </servlet>
     <error-page>
-         <error-code>404</error-code>
+        <error-code>404</error-code>
         <location>/erro.jsp</location>
     </error-page>
+    <servlet>
+        <servlet-name>CrudContato</servlet-name>
+        <servlet-class>br.com.gerenciador.controle.CrudContato</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CContato</servlet-name>
         <url-pattern>/CContato</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CrudContato</servlet-name>
+        <url-pattern>/CrudContato</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
@@ -19,5 +27,5 @@
     </session-config>
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
-    </welcome-file-list>  
+    </welcome-file-list>
 </web-app>

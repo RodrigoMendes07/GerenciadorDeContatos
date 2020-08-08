@@ -6,7 +6,10 @@
 package br.com.gerenciador.bean;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,7 +25,8 @@ import javax.persistence.TemporalType;
 @Entity
 public class Contato implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+  //  
+   private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -155,5 +159,16 @@ public class Contato implements Serializable {
     public void setObservacao(String observacao) {
         this.observacao = observacao;
     }
-       
+
+    private static Calendar parseData(String data) {
+        try {
+            Date date = new SimpleDateFormat("dd/MM/yyyy").parse(data);
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(date);
+            return calendar;
+        } catch (ParseException ex) {
+            throw new IllegalArgumentException(ex);
+        }
+    }
+
 }
